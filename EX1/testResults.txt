@@ -1,4 +1,4 @@
-
+[?1h=
                             < M A T L A B (R) >
                   Copyright 1984-2015 The MathWorks, Inc.
                    R2015a (8.5.0.197613) 64-bit (maci64)
@@ -18,3 +18,4 @@ Error: File: /Users/milletari/Dropbox/Documents/University/PhD/Presentation/MLMI
 ()-indexing must appear last in an index expression.
 error at line 5 of file testAll.m.
 error at line 7 of file Test.m.
+[?1l>
