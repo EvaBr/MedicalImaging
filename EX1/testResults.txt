@@ -21,4 +21,6 @@ tests could not be fully run
 MATLAB:mir_paren_index_must_be_last
 Error: File: /Users/milletari/Dropbox/Documents/University/PhD/Presentation/MLMI_WS_2015/Students/Breznik/EX1/ProcessImage.m Line: 57 Column: 24
 ()-indexing must appear last in an index expression.
+error at line 5 of file testAll.m.
+error at line 7 of file Test.m.
 [?1l>
