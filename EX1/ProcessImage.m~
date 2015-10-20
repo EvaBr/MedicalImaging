@@ -18,7 +18,7 @@ classdef ProcessImage
             obj.image = im;
             obj.lastOperation = [];
             obj.stackPointer = 1;
-          %  obj = class(obj, 'ProcessImage'); %??
+         %   obj = class(obj, 'ProcessImage'); %??
         end
 
         function obj=makeNegative(obj)
@@ -49,7 +49,7 @@ classdef ProcessImage
 
             obj.image = (obj.image - mean2(obj.image))/std2(obj.image);
             
-            obj.stackPointer = obj.stackPointer+1;
+            
 
         end
 
@@ -57,17 +57,12 @@ classdef ProcessImage
             %this member function makes obj.image grayscale and stores this
             %operation as last operation in the stack of operations
 
-            channels = size(obj.image);
-            %if (channels==3)
-            if (length(channels)==3)
-                %channels = channels(3); need to check again, if this==3?
+ %           channels = size(obj.image)(3);
+  %          if (channels==3)
+   %             obj.lastOperation{obj.stackPointer}={'makeGrayscale',obj.image};
 
-                obj.lastOperation{obj.stackPointer}={'makeGrayscale', obj.image};
-
-                obj.image = 0.21*obj.image(:,:,1) + 0.72*obj.image(:,:,2) + 0.07*obj.image(:,:,3);
-                
-                obj.stackPointer = obj.stackPointer+1;
-            end
+    %            obj.image = 0.21*obj.image(:,:,1) + 0.72*obj.image(:,:,2) + 0.07*obj.image(:,:,3);
+    %        end
 
         end
 
@@ -75,10 +70,10 @@ classdef ProcessImage
             %this member function reads the last operation pointed by the
             %stack pointer and undoes it.
 
-            lastop = obj.lastOperation{obj.stackPointer-1};
+            lastop = obj.lastOperation{obj.stackPointer};
             %undo-ing by changing the stack pointer and rewriting image
             obj.stackPointer = obj.stackPointer-1;
-            obj.image = lastop{2};   %% stckPint-1?? Nope - kaže na tisto, ki je bila zdajle narejena; slika je izzid te na ktero kaže
+    %        obj.image = lastop{2};   %% stckPint-1?? Nope - kaže na tisto, ki je bila zdajle narejena; slika je izzid te na ktero kaže
         end
 
         function obj=redo(obj)
@@ -88,7 +83,7 @@ classdef ProcessImage
             if(length(obj.lastOperation)>obj.stackPointer)
               obj.stackPointer = obj.stackPointer +1;
               nextop = obj.lastOperation{obj.stackPointer};
-              obj.image = nextop{2};  %%or should you read name of operation and actually redo it manually (as in, call it again)?
+  %            obj.image = nextop{2};  %%or should you read name of operation and actually redo it manually (as in, call it again)?
             end
         end
 
