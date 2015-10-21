@@ -12,10 +12,11 @@ For product information, visit www.mathworks.com.
 	Academic License
 
 I am testing the integral image
+I am testing the integral image computation
 tests could not be fully run
 MATLAB:dimagree
 Matrix dimensions must agree.
 error at line 5 of file testAll.m.
 error at line 9 of file Test.m.
-error at line 11 of file testIntImage.m.
+error at line 13 of file testIntImage.m.
 [?1l>
