@@ -16,7 +16,7 @@ classdef ProcessImage
 
             im = im2double(img);
             obj.image = im;
-            obj.lastOperation = [];
+            obj.lastOperation = cell(); %[];
             obj.stackPointer = 1;
           %  obj = class(obj, 'ProcessImage'); %??
         end
@@ -48,7 +48,7 @@ classdef ProcessImage
             obj.lastOperation{obj.stackPointer}={'normalise',obj.image};
 
             obj.image = (obj.image - mean2(obj.image))/std2(obj.image);
-            
+
             obj.stackPointer = obj.stackPointer+1;
 
         end
@@ -65,7 +65,7 @@ classdef ProcessImage
                 obj.lastOperation{obj.stackPointer}={'makeGrayscale', obj.image};
 
                 obj.image = 0.21*obj.image(:,:,1) + 0.72*obj.image(:,:,2) + 0.07*obj.image(:,:,3);
-                
+
                 obj.stackPointer = obj.stackPointer+1;
             end
 
@@ -75,11 +75,13 @@ classdef ProcessImage
             %this member function reads the last operation pointed by the
             %stack pointer and undoes it.
 
-            lastop = obj.lastOperation{obj.stackPointer-1};
-            %undo-ing by changing the stack pointer and rewriting image
-            obj.stackPointer = obj.stackPointer-1;
-            obj.image = lastop{2};   %% stckPint-1?? Nope - kaže na tisto, ki je bila zdajle narejena; slika je izzid te na ktero kaže
-        end
+	          if (obj.stackPointer>1){
+	            lastop = obj.lastOperation{obj.stackPointer-1};
+              %undo-ing by changing the stack pointer and rewriting image
+              obj.stackPointer = obj.stackPointer-1;
+              obj.image = lastop{2};   %% stckPint-1?? Nope - kaže na tisto, ki je bila zdajle narejena; slika je izzid te na ktero kaže
+ 	          end
+	      end
 
         function obj=redo(obj)
             %this member function reads the next operation (if any) in the
