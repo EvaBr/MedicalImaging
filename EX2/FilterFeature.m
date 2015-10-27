@@ -61,6 +61,11 @@ classdef FilterFeature
                    %the image. in practice you do this by looping the image
                    %and performing std(...) for each of its overlapping
                    %patches.
+                   
+                   filt = fspecial('average', siz);
+                   obj.featureImg = sqrt(imfilter(img.^2, filt, 'replicate', 'same') - ...
+                                         imfilter(img, filt, 'replicate', 'same').^2);
+                   
            end      
                    
         end
