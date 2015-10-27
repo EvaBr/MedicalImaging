@@ -19,15 +19,18 @@ classdef BoxFeature
             
             obj.params = params;
             obj.II = IntImage(img);
+            s = size(img);
             
             switch params.type
                 case 'LBP'
-                    %...
+                    obj.boxesPos = round(s/2, 0); %the middle one
+                    obj.boxesNeg = 1; %all others... which ones are that??
                 case 'longRangeOffset'
-                    %...
-
+                    obj.boxesPos = params.offsets1(1);
+                    obj.boxesNeg = params.offsets1(2:end);
                 case 'longRangeDoubleOffset'
-                    %...   
+                    obj.boxesPos = params.offsets1;
+                    obj.boxesNeg = params.offsets2;
             end
             
         end
