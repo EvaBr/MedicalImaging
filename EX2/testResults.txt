@@ -14,7 +14,7 @@ For product information, visit www.mathworks.com.
 
 ans = 
 
-   27-Oct-2015 14:05:15
+   27-Oct-2015 16:42:36
 
 I am testing the integral image
 I am testing the integral image computation
@@ -32,10 +32,12 @@ Integral image lookup outOfRange test passed
 passed: 6. failed: 0
 I am testing the filter features
 I am testing that you are filtering the image with a gaussian correctly
+Gaussian image failed
+I am testing that your gaussian filter is correct
 tests could not be fully run
 MATLAB:dimagree
 Matrix dimensions must agree.
 error at line 5 of file testAll.m.
 error at line 20 of file Test.m.
-error at line 16 of file testFilterFeature.m.
+error at line 25 of file testFilterFeature.m.
 [?1l>
