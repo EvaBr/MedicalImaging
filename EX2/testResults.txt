@@ -14,7 +14,7 @@ For product information, visit www.mathworks.com.
 
 ans = 
 
-   27-Oct-2015 23:11:24
+   28-Oct-2015 00:33:00
 
 I am testing the integral image
 I am testing the integral image computation
