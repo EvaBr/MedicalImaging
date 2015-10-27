@@ -11,12 +11,31 @@ For product information, visit www.mathworks.com.
 
 	Academic License
 
+
+ans = 
+
+   27-Oct-2015 14:05:15
+
 I am testing the integral image
 I am testing the integral image computation
+Integral image test passed
+I am testing the lookup function over the whole image -- coordinates [i,j,1,1]
+Integral image lookup test passed
+I am testing the lookup function for a single box
+Integral image lookup 2 test passed
+I am testing the lookup function for another single box
+Integral image lookup 3 test passed
+I am testing the lookup function for two boxes
+Integral image lookup 4 test passed
+I am testing the lookup function for a -- out of range -- single box
+Integral image lookup outOfRange test passed
+passed: 6. failed: 0
+I am testing the filter features
+I am testing that you are filtering the image with a gaussian correctly
 tests could not be fully run
 MATLAB:dimagree
 Matrix dimensions must agree.
 error at line 5 of file testAll.m.
-error at line 9 of file Test.m.
-error at line 14 of file testIntImage.m.
+error at line 20 of file Test.m.
+error at line 16 of file testFilterFeature.m.
 [?1l>
