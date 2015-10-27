@@ -11,7 +11,7 @@ classdef FilterFeature
         function obj=FilterFeature(img, filterName, siz, sigma)
            %... img is already in grayscale, right?
            obj.image = img;
-           obj.filter = filterName;
+           %obj.filter = filterName;
            
            switch filterName
                case 'gaussian'
@@ -66,7 +66,8 @@ classdef FilterFeature
                    obj.featureImg = sqrt(imfilter(img.^2, filt, 'replicate', 'same') - ...
                                          imfilter(img, filt, 'replicate', 'same').^2);
                    
-           end      
+           end
+           obj.filter = filt;
                    
         end
         
@@ -78,7 +79,15 @@ classdef FilterFeature
             
             %remember to address the case the coordinates are out of range!!
               
-            %...
+            s = size(obj.featureImg);
+            value = [];
+            for i=x'
+               if i(1)>s(1) || i(2)>s(2)
+                   value = [value; 0];
+               else
+                   value = [value; obj.featureImg(i(1), i(2))];
+               end
+            end
         end
 
     end

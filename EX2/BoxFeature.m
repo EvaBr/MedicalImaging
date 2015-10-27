@@ -10,14 +10,15 @@ classdef BoxFeature
     end
     
     methods
-        function obj=BoxFeature(img,params)
+        function obj=BoxFeature(img, params)
             %params is a structure
             %params.type can be 'LBP', 'longRangeOffset' or 'longRangeDoubleOffset'
             %params.sizes box size(s) - one size for each box!
             %params.offsets1 significant only for longRangeOffset and longRangeDoubleOffset - two numbers for each box
             %params.offsets2 significant only for longRangeDoubleOffset
             
-            %...
+            obj.params = params;
+            obj.II = IntImage(img);
             
             switch params.type
                 case 'LBP'
