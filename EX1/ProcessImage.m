@@ -16,7 +16,7 @@ classdef ProcessImage
 
             im = im2double(img);
             obj.image = im;
-            obj.lastOperation = cell(); %[];
+            obj.lastOperation = cell(0); %[];
             obj.stackPointer = 1;
           %  obj = class(obj, 'ProcessImage'); %??
         end
@@ -75,11 +75,11 @@ classdef ProcessImage
             %this member function reads the last operation pointed by the
             %stack pointer and undoes it.
 
-	          if (obj.stackPointer>1){
+	          if (obj.stackPointer>1)
 	            lastop = obj.lastOperation{obj.stackPointer-1};
-              %undo-ing by changing the stack pointer and rewriting image
-              obj.stackPointer = obj.stackPointer-1;
-              obj.image = lastop{2};   %% stckPint-1?? Nope - kaže na tisto, ki je bila zdajle narejena; slika je izzid te na ktero kaže
+                %undo-ing by changing the stack pointer and rewriting image
+                obj.stackPointer = obj.stackPointer-1;
+                obj.image = lastop{2};   %% stckPint-1?? Nope - kaže na tisto, ki je bila zdajle narejena; slika je izzid te na ktero kaže
  	          end
 	      end
 
