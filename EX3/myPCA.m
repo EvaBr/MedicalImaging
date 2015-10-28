@@ -34,10 +34,12 @@ classdef myPCA
         function legalD = synthetize(obj, weights) 
             %select the eigenmodes to be used according to the size of
             %weights
-            d = size(weights, 1);
+            s = size(weights);
+            d = s(1);
+            N = s(2);
             eigens = obj.eigeModes(:, 1:d);
             %synthetize the legal face from the weights
-            legalD = obj.dataMean + eigens*weights;
+            legalD = repmat(obj.dataMean, 1, N) + eigens*weights;
         end
         
         function showModesOfVariation(obj,shape,num)
