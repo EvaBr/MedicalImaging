@@ -18,7 +18,7 @@ classdef myPCA
 
             %compute eigenvalues and eigenvectors usign SVD for example
             %(refer to slides)
-            [U, S, V] = svd(obj.dataset./sqrt(N-1));
+            [U, S, V] = svd(obj.dataset/sqrt(N-1));
 
             %IMPORTANT!!! change sign (in order to respect the convention) 
             %here we change sign to respect the convention (see slides)
@@ -28,7 +28,7 @@ classdef myPCA
             %assign the eigenvectors to the eigenModes matrix and square and convert
             %the eigenvalues to a vector and assign it to obj.variances 
             obj.variances = diag(S).*diag(S);
-            obj.eigenModes = V';
+            obj.eigenModes = V;
         end
         
         function legalD = synthetize(obj, weights) 
