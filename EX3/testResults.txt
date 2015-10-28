@@ -19,19 +19,23 @@ variances PASSED
 checking eigenmodes...
 eigenmodes PASSED
 checking projection into subspace (Dnew) (first return argument)...
+projection into subspace PASSED
+checking projection into subspace (weights) (second return argument)...
+projection into subspace PASSED
+checking the function that finds the necessary quantity of eigenmodes to assure that a certain percentage of the variance is kept in the subspace
 
 msgString =
 
-Undefined function or variable 'N'.
+Undefined function or variable 'pecentage'.
 
-Error in myPCA/projectData (line 105)
-            temp = D - repmat(obj.dataMean, 1, N);
+Error in myPCA/findNecessaryEigenmodesForPercentageOfVariation (line 71)
+            neededValueOfVar = pecentage*s/100;
 
-Error in TestPCA (line 91)
-        [Dnew,weights]=projectData(obj,D,50);
+Error in TestPCA (line 132)
+        i=findNecessaryEigenmodesForPercentageOfVariation(obj,93);
 
 Error in Test (line 5)
-    [pass,fail]=TestPCA(data);
+    [pass,fail]=TestPCA(data)
 
 Error in testAll (line 5)
     Test
@@ -39,12 +43,12 @@ Error in testAll (line 5)
 
 check could not be done because of an error
 
-passed =
+pass =
 
-     4
+     6
 
 
-failed =
+fail =
 
      1
 
@@ -60,7 +64,7 @@ Error in TestLDA (line 44)
         if(sum(obj.class(:)~=objRef.class(:))==0)
 
 Error in Test (line 10)
-    [pass,fail]=TestLDA(data);
+    [pass,fail]=TestLDA(data)
 
 Error in testAll (line 5)
     Test
@@ -68,17 +72,25 @@ Error in testAll (line 5)
 
 check could not be done because of an error
 
+pass =
+
+     0
+
+
+fail =
+
+     1
+
+total PASSED
+
 passed =
 
-     4
+     6
 
+total FAILED
 
 failed =
 
      2
 
-[Warning: "/home/milletari/Documents/MLMI_2015_WS/EX/EX3s/Tests" not found in
-path.] 
-[> In rmpath (line 57)
-  In testAll (line 15)] 
 [?1l>
