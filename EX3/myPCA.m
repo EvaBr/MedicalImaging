@@ -12,9 +12,9 @@ classdef myPCA
     methods
         function obj = myPCA(D)
             %compute data mean and assign D to obj.dataset
-            N = size(D, 1); %or size(2)?
-            obj.dataMean = mean(D); 
-            obj.dataset = D - repmat(obj.dataMean, N, 1); % je to treba ze tu naredit? ali kar obj.dataset=D?
+            N = size(D, 2); %number of faces, each face is in own column 
+            obj.dataMean = mean(D, 2); 
+            obj.dataset = D - repmat(obj.dataMean, 1, N); % je to treba ze tu naredit? ali kar obj.dataset=D?
 
             %compute eigenvalues and eigenvectors usign SVD for example
             %(refer to slides)
