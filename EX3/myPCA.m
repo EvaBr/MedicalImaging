@@ -68,7 +68,7 @@ classdef myPCA
         
         function l = findNecessaryEigenmodesForPercentageOfVariation(obj,percentage)  
             s = sum(obj.variances);
-            neededValueOfVar = pecentage*s/100;
+            neededValueOfVar = percentage*s/100;
             
             len = length(obj.variances);
             l = len-1;
