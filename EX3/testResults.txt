@@ -23,34 +23,18 @@ projection into subspace PASSED
 checking projection into subspace (weights) (second return argument)...
 projection into subspace PASSED
 checking the function that finds the necessary quantity of eigenmodes to assure that a certain percentage of the variance is kept in the subspace
-
-msgString =
-
-Undefined function or variable 'pecentage'.
-
-Error in myPCA/findNecessaryEigenmodesForPercentageOfVariation (line 71)
-            neededValueOfVar = pecentage*s/100;
-
-Error in TestPCA (line 132)
-        i=findNecessaryEigenmodesForPercentageOfVariation(obj,93);
-
-Error in Test (line 5)
-    [pass,fail]=TestPCA(data)
-
-Error in testAll (line 5)
-    Test
-
-
-check could not be done because of an error
+check number of eigenmodes that retain certain variance PASSED
+checking function synthetize...
+synthesis PASSED
 
 pass =
 
-     6
+     8
 
 
 fail =
 
-     1
+     0
 
 instantiating LDA object
 checking class vector...
@@ -85,12 +69,12 @@ total PASSED
 
 passed =
 
-     6
+     8
 
 total FAILED
 
 failed =
 
-     2
+     1
 
 [?1l>
