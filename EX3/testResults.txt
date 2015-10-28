@@ -22,7 +22,10 @@ checking projection into subspace (Dnew) (first return argument)...
 
 msgString =
 
-Output argument "Dnew" (and maybe others) not assigned during call to "myPCA/projectData".
+Undefined function or variable 'N'.
+
+Error in myPCA/projectData (line 105)
+            temp = D - repmat(obj.dataMean, 1, N);
 
 Error in TestPCA (line 91)
         [Dnew,weights]=projectData(obj,D,50);
