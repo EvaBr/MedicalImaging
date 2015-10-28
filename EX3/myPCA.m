@@ -102,7 +102,7 @@ classdef myPCA
            
             %project data into subspace Dnew is the projected data having
             %same dimension as a face image 
-            temp = D - repmat(obj.dataMean, 1, N);
+            temp = D - repmat(obj.dataMean, 1, size(D,2));
             Dnew = temp'*neweigens;
             
             %get weights that are as many as the eigenmodes being used
