@@ -13,13 +13,17 @@ For product information, visit www.mathworks.com.
 
 instantiating PCA object
 checking dataMean...
+dataMean PASSED
+checking variances...
+variances FAILED
+checking eigenmodes...
 
 msgString =
 
 Matrix dimensions must agree.
 
-Error in TestPCA (line 30)
-        if(sum(objRef.dataMean(:)~=obj.dataMean(:))==0)
+Error in TestPCA (line 69)
+        if(sum(objRef.eigenModes(:)~=obj.eigenModes(:))==0)
 
 Error in Test (line 5)
     [pass,fail]=TestPCA(data)
@@ -32,22 +36,22 @@ check could not be done because of an error
 
 pass =
 
-     1
+     2
 
 
 fail =
 
-     1
+     2
 
 
 passed =
 
-     1
+     2
 
 
 failed =
 
-     1
+     2
 
 instantiating LDA object
 checking class vector...
@@ -81,12 +85,12 @@ fail =
 
 passed =
 
-     1
+     2
 
 
 failed =
 
-     2
+     3
 
 [Warning: "/home/milletari/Documents/MLMI_2015_WS/EX/EX3s/Tests" not found in
 path.] 
