@@ -18,14 +18,14 @@ classdef FilterFeature
                    %... here you should also produce a filtered version of
                    %the image
                    
-                   filt = fspecial('gaussian', 6*sigma+1, sigma);
+                   filt = fspecial('gaussian', siz, sigma);
                    obj.featureImg = imfilter(img, filt, 'replicate', 'same');
                
                case 'LoG'
                    %... here you should also produce a filtered version of
                    %the image
                
-                   filt = fspecial('log', 6*sigma+1, sigma);
+                   filt = fspecial('log', siz, sigma);
                    obj.featureImg = imfilter(img, filt, 'replicate', 'same');
                
                case 'mean'
