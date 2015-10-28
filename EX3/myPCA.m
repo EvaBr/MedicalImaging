@@ -10,13 +10,14 @@ classdef myPCA
     end
     
     methods
-        function obj=myPCA(D)
+        function obj = myPCA(D)
             %compute data mean and assign D to obj.dataset
-            %...
+            obj.dataMean = mean2(D); 
+            obj.dataset = D - obj.dataMean;
 
             %compute eigenvalues and eigenvectors usign SVD for example
             %(refer to slides)
-            %...
+            [U, S, V] = svd(obj.dataset);
 
             %IMPORTANT!!! change sign (in order to respect the convention) 
             %here we change sign to respect the convention (see slides)
@@ -25,12 +26,11 @@ classdef myPCA
 
             %assign the eigenvectors to the eigenModes matrix and square and convert
             %the eigenvalues to a vector and assign it to obj.variances 
-            %...
-
-
+            obj.variances = diag(S).*diag(S);
+            obj.eigenModes = V;
         end
         
-        function legalD=synthetize(obj, weights) 
+        function legalD = synthetize(obj, weights) 
             %select the eigenmodes to be used according to the size of
             %weights
             %...
