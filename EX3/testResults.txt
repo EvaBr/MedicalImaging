@@ -15,18 +15,20 @@ instantiating PCA object
 checking dataMean...
 dataMean PASSED
 checking variances...
-variances FAILED
+variances PASSED
 checking eigenmodes...
+eigenmodes PASSED
+checking projection into subspace (Dnew) (first return argument)...
 
 msgString =
 
-Matrix dimensions must agree.
+Output argument "Dnew" (and maybe others) not assigned during call to "myPCA/projectData".
 
-Error in TestPCA (line 69)
-        if(sum(objRef.eigenModes(:)~=obj.eigenModes(:))==0)
+Error in TestPCA (line 91)
+        [Dnew,weights]=projectData(obj,D,50);
 
 Error in Test (line 5)
-    [pass,fail]=TestPCA(data)
+    [pass,fail]=TestPCA(data);
 
 Error in testAll (line 5)
     Test
@@ -34,24 +36,14 @@ Error in testAll (line 5)
 
 check could not be done because of an error
 
-pass =
-
-     2
-
-
-fail =
-
-     2
-
-
 passed =
 
-     2
+     4
 
 
 failed =
 
-     2
+     1
 
 instantiating LDA object
 checking class vector...
@@ -65,7 +57,7 @@ Error in TestLDA (line 44)
         if(sum(obj.class(:)~=objRef.class(:))==0)
 
 Error in Test (line 10)
-    [pass,fail]=TestLDA(data)
+    [pass,fail]=TestLDA(data);
 
 Error in testAll (line 5)
     Test
@@ -73,24 +65,14 @@ Error in testAll (line 5)
 
 check could not be done because of an error
 
-pass =
-
-     0
-
-
-fail =
-
-     1
-
-
 passed =
 
-     2
+     4
 
 
 failed =
 
-     3
+     2
 
 [Warning: "/home/milletari/Documents/MLMI_2015_WS/EX/EX3s/Tests" not found in
 path.] 
