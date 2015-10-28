@@ -37,7 +37,7 @@ classdef myPCA
             s = size(weights);
             d = s(1);
             N = s(2);
-            eigens = obj.eigeModes(:, 1:d);
+            eigens = obj.eigenModes(:, 1:d);
             %synthetize the legal face from the weights
             legalD = repmat(obj.dataMean, 1, N) + eigens*weights;
         end
@@ -98,15 +98,16 @@ classdef myPCA
             %select current eigenmodes! please check that numEigenmodes
             %is smaller than the total number of eigenvectors. In case it is
             %bigger, currEigenmodes should comprise all the eigenvectors
-            %...
+            neweigens = obj.eigenModes(:, 1:min(numEigenmodes, size(D,1)));
            
             %project data into subspace Dnew is the projected data having
             %same dimension as a face image 
-            %...
+            temp = D - repmat(obj.dataMean, 1, N);
+            Dnew = temp'*neweigens;
             
             %get weights that are as many as the eigenmodes being used
             %here. the weights can be used to synthetize
-            %... 
+            weights = neweigens'*temp;
             
         end
     end
