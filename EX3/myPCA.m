@@ -18,7 +18,7 @@ classdef myPCA
 
             %compute eigenvalues and eigenvectors usign SVD for example
             %(refer to slides)
-            [U, S, V] = svd(obj.dataset/sqrt(N-1));
+            [U, S, V] = svd((obj.dataset/sqrt(N-1))');
 
             %IMPORTANT!!! change sign (in order to respect the convention) 
             %here we change sign to respect the convention (see slides)
