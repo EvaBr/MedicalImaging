@@ -13,12 +13,12 @@ classdef myPCA
         function obj = myPCA(D)
             %compute data mean and assign D to obj.dataset
             N = size(D, 2);
-            obj.dataMean = mean(D); 
-            obj.dataset = D - repmat(obj.dataMean, N, 1);
+            obj.dataMean = repmat(mean(D), N, 1); 
+            obj.dataset = D - obj.dataMean; % je to treba ze tu naredit? ali kar obj.dataset=D?
 
             %compute eigenvalues and eigenvectors usign SVD for example
             %(refer to slides)
-            [U, S, V] = svd(obj.dataset);
+            [U, S, V] = svd(obj.dataset./sqrt(N-1));
 
             %IMPORTANT!!! change sign (in order to respect the convention) 
             %here we change sign to respect the convention (see slides)
@@ -34,9 +34,10 @@ classdef myPCA
         function legalD = synthetize(obj, weights) 
             %select the eigenmodes to be used according to the size of
             %weights
-            %...
+            d = size(weights, 1);
+            eigens = obj.eigeModes(:, 1:d);
             %synthetize the legal face from the weights
-            %...
+            legalD = obj.dataMean + eigens*weights;
         end
         
         function showModesOfVariation(obj,shape,num)
@@ -63,8 +64,31 @@ classdef myPCA
             end
         end
         
-        function i=findNecessaryEigenmodesForPercentageOfVariation(obj,percentage)  
-            %...
+        function l = findNecessaryEigenmodesForPercentageOfVariation(obj,percentage)  
+            s = sum(obj.variances);
+            neededValueOfVar = pecentage*s/100;
+            
+            len = length(obj.variances);
+            l = len-1;
+            while l>1 && l<len
+                if sum(obj.variances(1:l))/s > neededValueOfVar
+                    l = l-1;
+                elseif sum(obj.variances(1:l))/s < neededValueOfVar
+                    l = l+1;
+                end
+            end
+            
+            
+            %dif = round(l/2, 0);
+            %ind = dif;
+            %while dif>0
+            %    dif = round(dif/2, 0);
+            %    if sum(obj.variances(1:ind)/s > neededValueOfValueOfVar
+            %        ind = ind - dif;
+            %    else
+            %        in = ind + dif;
+            %    end
+            %end
         end
         
 
