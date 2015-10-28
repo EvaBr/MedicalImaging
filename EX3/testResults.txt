@@ -18,7 +18,7 @@ msgString =
 Matrix dimensions must agree.
 
 Error in myPCA (line 17)
-            obj.dataset = D - repmat(obj.dataMean, N, 1);
+            obj.dataset = D - obj.dataMean; % je to treba ze tu naredit? ali kar obj.dataset=D?
 
 Error in TestPCA (line 15)
        obj=myPCA(D);
