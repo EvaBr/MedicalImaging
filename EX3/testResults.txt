@@ -11,6 +11,11 @@ For product information, visit www.mathworks.com.
 
 	Academic License
 
+
+ans = 
+
+   29-Oct-2015 23:22:10
+
 TEST PCA
 instantiating PCA object
 checking dataMean...
@@ -68,7 +73,7 @@ Error in myLDA/projectData (line 119)
 Error in TestLDA (line 189)
         [DnewTrain]=projectData(obj,D,2);
 
-Error in Test (line 12)
+Error in Test (line 13)
     [pass,fail]=TestLDA(data)
 
 Error in testAll (line 5)
