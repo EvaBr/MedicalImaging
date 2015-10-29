@@ -11,6 +11,7 @@ For product information, visit www.mathworks.com.
 
 	Academic License
 
+TEST PCA
 instantiating PCA object
 checking dataMean...
 dataMean PASSED
@@ -36,18 +37,38 @@ fail =
 
      0
 
+TEST LDA
 instantiating LDA object
 checking class vector...
+class vector check PASSED
+checking averageWholeDataset vector...
+averageWholeDataset vector check PASSED
+checking numClasses vector...
+numClasses vector check PASSED
+checking numObservationsEachClass vector...
+numObservationsEachClass vector check PASSED
+checking eigenModes matrix...
+eigenModes matrix check FAILED
+checking eigValues vector...
+eigValues vector check FAILED
+checking within class scatter matrix S_w...
+S_w matrix check FAILED
+checking between class scatter matrix S_b...
+S_b matrix check FAILED
+checking function projectData...
 
 msgString =
 
-Error using ~=
-Matrix dimensions must agree.
+Error using *
+Inner matrix dimensions must agree.
 
-Error in TestLDA (line 44)
-        if(sum(obj.class(:)~=objRef.class(:))==0)
+Error in myLDA/projectData (line 119)
+            Dnew = D'*currEigenmodes;
 
-Error in Test (line 10)
+Error in TestLDA (line 189)
+        [DnewTrain]=projectData(obj,D,2);
+
+Error in Test (line 12)
     [pass,fail]=TestLDA(data)
 
 Error in testAll (line 5)
@@ -58,23 +79,23 @@ check could not be done because of an error
 
 pass =
 
-     0
+     4
 
 
 fail =
 
-     1
+     5
 
 total PASSED
 
 passed =
 
-     8
+    12
 
 total FAILED
 
 failed =
 
-     1
+     5
 
 [?1l>
