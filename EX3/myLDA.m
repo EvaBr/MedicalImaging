@@ -101,7 +101,7 @@ classdef myLDA
            
        
             %[obj.eigenModes, evaluesmat] = svd(v);
-            [~, evaluesmat, obj.eigenModes] = svd(v);
+            [obj.eigenModes, evaluesmat, ~] = svd(v);
            
             %convert evaluesmat to a vector (using diag()) and store in obj.eigValues;
             obj.eigValues = diag(evaluesmat);
@@ -119,7 +119,7 @@ classdef myLDA
             currEigenmodes = obj.eigenModes(min(numEigenmodes, size(obj.eigenModes, 1)), :);
             
             %project
-            Dnew = transpose(D'*currEigenmodes);
+            Dnew = transpose(D'*currEigenmodes');
         end
     end
     
