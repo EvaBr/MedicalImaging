@@ -19,12 +19,25 @@ classdef BoxFeature
             
             obj.params = params;
             obj.II = IntImage(img);
-            s = size(img);
-            
+            siz = params.size(1);
             switch params.type
                 case 'LBP'
-                    obj.boxesPos = round(s/2, 0); %the middle one
-                    obj.boxesNeg = 1; %all others... which ones are that??
+                    obj.boxesPos = [siz+1-siz/2, siz+1-siz/2, siz, siz];
+                    %middle box, izmed devetih (neodv od slike): vrneš pa [x_ulc, y_ulc, siz_x, siz_y] 1+siz-siz/2, ne pa siz+1 (centered)
+                    obj.boxesNeg = [-siz/2, -siz/2, siz, siz;
+                                    -siz/2, siz+1-siz/2, siz, siz; 
+                                    -siz/2, 2*siz+1-siz/2, siz, siz; 
+                                    siz+1-siz/2, -siz/2, siz, siz; 
+                                    %tu manjka middle
+                                    siz+1-siz/2, siz+1-siz/2, siz, siz;
+                                    2*siz+1-siz/2, -siz/2, siz, siz;
+                                    2*siz+1-siz/2, siz+1-siz/2, siz, siz;
+                                    2*siz+1-siz/2, 2*siz+1-siz/2, siz, siz];
+                                                    
+                    %all others... which ones are that??
+                    %for negative ones vrneš isto kot za poz-; isti sistem
+                    %, vrneš pa [P1 P2 P3 P4 P6 P7 P8 P9]' , torej Pi po
+                    %vrsticah
                 case 'longRangeOffset'
                     obj.boxesPos = params.offsets1(1);
                     obj.boxesNeg = params.offsets1(2:end);
