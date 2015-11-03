@@ -86,7 +86,7 @@ classdef myLDA
                 end
                 
                 temp = (M{i}{2} - obj.averageWholeDataset);
-                obj.S_b = obj.S_b + obj.numObservationsEachClass(i)*(temp*temp');
+                obj.S_b = obj.S_b + obj.numObservationsEachClass(i)*temp*temp';
             end    
             %compute inverse of obj.S_w this has to be done as specified
             %here below!!!
