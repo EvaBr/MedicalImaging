@@ -119,7 +119,7 @@ classdef myLDA
             currEigenmodes = obj.eigenModes(:, min(numEigenmodes, size(obj.eigenModes, 1))); %prej obratno, : na drugem mestu
             
             %project
-            Dnew = transpose(D'*currEigenmodes);
+            Dnew = D'*currEigenmodes; %transpose this, if you want same num of cols as before
         end
     end
     
