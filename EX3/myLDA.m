@@ -86,7 +86,7 @@ classdef myLDA
                 end
                 
                 temp = (M{i}{2} - obj.averageWholeDataset);
-                obj.S_b = obj.S_b + temp*temp';
+                obj.S_b = obj.S_b + obj.numObservationsEachClass(i)*(temp*temp');
             end    
             %compute inverse of obj.S_w this has to be done as specified
             %here below!!!
@@ -99,24 +99,27 @@ classdef myLDA
            
             v = invS_w*obj.S_b; %compute matrix v
            
-            [obj.eigenModes,evaluesmat] = svd(v);
+       
+            %[obj.eigenModes, evaluesmat] = svd(v);
+            [~, evaluesmat, obj.eigenModes] = svd(v);
            
             %convert evaluesmat to a vector (using diag()) and store in obj.eigValues;
             obj.eigValues = diag(evaluesmat);
         
            
            end
+           
         end
         
         
-        function [Dnew]=projectData(obj,D,numEigenmodes) %can process data in from of matrices (given the data project it into subspace using numEigenmodes eigen modes)
+        function [Dnew]=projectData(obj,D, numEigenmodes) %can process data in from of matrices (given the data project it into subspace using numEigenmodes eigen modes)
             %select current eigenmodes! please check that numEigenmodes
             %is smaller than the total number of eigenvectors. In case it is
             %bigger, currEigenmodes should comprise all the eigenvectors
             currEigenmodes = obj.eigenModes(min(numEigenmodes, size(obj.eigenModes, 1)), :);
             
             %project
-            Dnew = D'*currEigenmodes;
+            Dnew = transpose(D'*currEigenmodes);
         end
     end
     
