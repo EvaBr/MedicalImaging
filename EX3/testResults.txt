@@ -14,7 +14,7 @@ For product information, visit www.mathworks.com.
 
 ans = 
 
-   29-Oct-2015 23:22:10
+   03-Nov-2015 10:00:02
 
 TEST PCA
 instantiating PCA object
@@ -67,8 +67,8 @@ msgString =
 Error using *
 Inner matrix dimensions must agree.
 
-Error in myLDA/projectData (line 119)
-            Dnew = D'*currEigenmodes;
+Error in myLDA/projectData (line 122)
+            Dnew = transpose(D'*currEigenmodes);
 
 Error in TestLDA (line 189)
         [DnewTrain]=projectData(obj,D,2);
