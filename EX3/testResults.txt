@@ -14,7 +14,7 @@ For product information, visit www.mathworks.com.
 
 ans = 
 
-   03-Nov-2015 11:03:05
+   03-Nov-2015 11:13:53
 
 TEST PCA
 instantiating PCA object
@@ -59,7 +59,7 @@ eigValues vector check FAILED
 checking within class scatter matrix S_w...
 S_w matrix check FAILED
 checking between class scatter matrix S_b...
-S_b matrix check FAILED
+S_b matrix check PASSED
 checking function projectData...
 
 msgString =
@@ -67,7 +67,7 @@ msgString =
 Matrix dimensions must agree.
 
 Error in TestLDA (line 190)
-        if(sum(DnewTrainRef(:)~=DnewTrain(:))==0)
+        if(sum(DnewTrainRef(:)~=DnewTrain(:))<0.00001)
 
 Error in Test (line 13)
     [pass,fail]=TestLDA(data)
@@ -80,23 +80,23 @@ check could not be done because of an error
 
 pass =
 
-     4
+     5
 
 
 fail =
 
-     5
+     4
 
 total PASSED
 
 passed =
 
-    12
+    13
 
 total FAILED
 
 failed =
 
-     5
+     4
 
 [?1l>
