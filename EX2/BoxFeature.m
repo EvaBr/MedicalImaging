@@ -34,9 +34,8 @@ classdef BoxFeature
                                     2*siz+1-siz/2, siz+1-siz/2, siz, siz;
                                     2*siz+1-siz/2, 2*siz+1-siz/2, siz, siz];
                                                     
-                    %all others... which ones are that??
-                    %for negative ones vrneš isto kot za poz-; isti sistem
-                    %, vrneš pa [P1 P2 P3 P4 P6 P7 P8 P9]' , torej Pi po
+                    %for negative ones vrnes isto kot za poz-; isti sistem
+                    %, vrnes pa [P1 P2 P3 P4 P6 P7 P8 P9]' , torej Pi po
                     %vrsticah
                 case 'longRangeOffset'
                     obj.boxesPos = params.offsets1(1);
@@ -53,7 +52,9 @@ classdef BoxFeature
             %or vector of points - x can be multiple points!!! (a matrix
             %with n rows and 2 columns)
             
-            %...
+            for i=x'
+		value = obj.II(obj.boxesPos+repmat(i(1:2), 1, size(obj.boxesPos,1)));
+	    end
             
         end
     end
