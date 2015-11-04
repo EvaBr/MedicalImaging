@@ -18,7 +18,7 @@ msgString =
 Assignment has fewer non-singleton rhs dimensions than non-singleton subscripts
 
 Error in myKMeans (line 92)
-               allmeans(:, (i-1)*K+1:i*K) = means;
+               allmeans(:, (i-1)*K+1:i*K) = means(:,:);
 
 Error in testmyKMeans (line 13)
        obj=myKMeans(D,K,1);
