@@ -31,16 +31,6 @@ Error in testAll (line 5)
 
 
 myKMeans object could not be instantiated
-
-passed =
-
-     0
-
-
-failed =
-
-     8
-
 instantiating SegmentImageKMeansRef object with K=4
 
 msgString =
@@ -61,16 +51,6 @@ Error in testAll (line 5)
 
 
 SegmentImageKMeansRef object could not be instantiated
-
-passed =
-
-     0
-
-
-failed =
-
-    10
-
 TOTAL PASSED
 
 passed =
@@ -81,6 +61,6 @@ TOTAL FAILED
 
 failed =
 
-    10
+     2
 
 [?1l>
