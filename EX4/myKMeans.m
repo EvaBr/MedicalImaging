@@ -26,13 +26,14 @@ classdef myKMeans
             %order to ensure convergence. 
             
             obj.k=K;
+            allmeans = zeros(size(D,1), num_rand_init*K); %for every rnd choice of start means, we get K means; one for each cluster
             
             for i=1:num_rand_init              
                %choose the means that should be used at the beginning. in
                %order to make a sensible choice of means we suggest to use
                %random elements withdrawn from D
                
-               %...
+               means = D(:, randi(K));
                
                %create a while cycle that terminates when the k-means have
                %been updated only by a very very small quantity, for
@@ -40,18 +41,28 @@ classdef myKMeans
 
                %add variable to keep track of changes of means ...
                
-               %...
+               lastMeanMovement = means+1;  %should you add 1 just in case?
                
                
                while sum(double(sqrt(sum(lastMeanMovement.^2,1))>=0.0001))>1
                   %assign points to the means by evaluating distance of
                   %each point to the means. compute euclidean distances
-                  
-                  %...
+                  cluster = zeros(1, size(D,2));
+                  for dat=1:size(D,2)
+                        [~, currentclus] = min( sum((means-repmat(D(:,dat), 1, K)).^2 , 1) ); %current cluster is the one with smallest dist  
+                        %komentar up: sqrt vrjetn ni treba - ce bo st
+                        %vecji, bo tut njegov sqrt vecji. sum delaš po
+                        %stolpcih
+                        cluster(dat) = currentclus;
+                  end
                   
                   %recompute means
+                  oldmean = means;
+                  for clust=1:K
+                     eltsOfCluster = D(:, cluster==clust);
+                     means(:, clust) = mean(eltsOfCluster, 2);  %average by the rows all datapoints in this cluster 
+                  end
                   
-                  %...
                   
                   %--------------- OPTIONAL ------------------
                   %this part does visualisation of data and means ONLY if the data is 2D
@@ -74,9 +85,11 @@ classdef myKMeans
                   %and store it in a variable which you will use to
                   %dertermine if the algorithm should terminate or not
                   
-                  %...
+                  lastMeanMovement = oldmean-means;
 
                end
+               
+               allmeans(:, (i-1)*K+1:i*K) = means;
             end
             
             %now we have to find the agreement between all candidate means
@@ -107,9 +120,10 @@ classdef myKMeans
            %we have to take the distance between each datapoint of D to
            %each of the k-means and then return the index of the mean that 
            %is closest to each datapoint
-           
-           %...
-           
+           clusterNum = zeros(1, size(D,2));
+           for datum=1:size(D,2)
+            [~, clusterNum(datum)] = min( sum((obj.means-repmat(D(:,datum), 1, K)).^2 , 1) );
+           end
         end
     end
     
