@@ -89,7 +89,7 @@ classdef myKMeans
 
                end
                
-               allmeans(:, (i-1)*K+1:i*K) = means;
+               allmeans(:, (i-1)*K+1:i*K) = means(:,:);
             end
             
             %now we have to find the agreement between all candidate means
