@@ -14,7 +14,7 @@ For product information, visit www.mathworks.com.
 
 ans = 
 
-   03-Nov-2015 14:51:46
+   04-Nov-2015 11:43:31
 
 TEST PCA
 instantiating PCA object
