@@ -30,7 +30,7 @@ classdef SegmentImageKMeans
            %create k-means object which runs k means 10 times in order to
            %ensure robustness
            
-           %...
+           obj.kMeansObj = myKMeans(obj.features, K, 10);
            
         end
         
@@ -39,8 +39,8 @@ classdef SegmentImageKMeans
             %feature stored in obj.features. then reshape them into a
             %matrix havin same size as the image.
             
-            %...
-           
+            clusters = obj.kMeansObj.assignDatapoints(obj.features);
+            segmentation = reshape(clusters, size(obj.img))';
         end
     end
     
