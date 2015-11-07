@@ -27,14 +27,14 @@ classdef myKMeans
             
             obj.k=K;
             allmeans = zeros(size(D,1), K, num_rand_init); %for every rnd choice of start means, we get K means; one for each cluster
-            disp(size(allmeans));
+            
             for i=1:num_rand_init              
                %choose the means that should be used at the beginning. in
                %order to make a sensible choice of means we suggest to use
                %random elements withdrawn from D
                
                meansRightNow = D(:, randi(size(D,2), [1, K]));
-               disp(size(meansRightNow));
+              
                %create a while cycle that terminates when the k-means have
                %been updated only by a very very small quantity, for
                %example 0.0001 
@@ -62,7 +62,7 @@ classdef myKMeans
                      eltsOfCluster = D(:, cluster==clust);
                      meansRightNow(:, clust) = mean(eltsOfCluster, 2);  %average by the rows all datapoints in this cluster 
                   end
-                  disp(size(meansRightNow));
+            
                   
                   %--------------- OPTIONAL ------------------
                   %this part does visualisation of data and means ONLY if the data is 2D
@@ -71,14 +71,14 @@ classdef myKMeans
                   %THAT SHOULD CONTAIN THE COORDINATES OF YOUR MEANS IN
                   %THIS ITERATION OF THE ALGORITHM. then you can uncomment
                   %the visualisation part.
-                   if(size(D,1)==2)
-                     scatter(D(1,:),D(2,:),'kx')
-                     hold on;
-                     scatter(meansRightNow(1,:),meansRightNow(2,:),'rx')
-                     drawnow
-                     pause(0.1);
-                     hold off;
-                   end
+    %               if(size(D,1)==2)
+     %                scatter(D(1,:),D(2,:),'kx')
+    %                 hold on;
+    %                 scatter(meansRightNow(1,:),meansRightNow(2,:),'rx')
+    %                 drawnow
+    %                 pause(0.1);
+    %                 hold off;
+    %               end
                   %--------------------------------------------
                   
                   %take differences between the new means and the old ones
