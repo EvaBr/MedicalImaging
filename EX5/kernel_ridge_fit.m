@@ -17,6 +17,8 @@ n = size(X, 1);
 K = zeros(n, n);
 for i=1:n
     for j=1:n
+%        disp(i);
+ %       disp(j);
         K(i, j) = kern(X(i, :), X(j, :));
     end
 end

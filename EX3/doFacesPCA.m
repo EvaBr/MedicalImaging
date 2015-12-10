@@ -2,7 +2,7 @@ function doFacesPCA()
     %doFacesPCA - performs PCA on the yale dataset. 
     
     %load dataset from file (this is done)
-    k=load('./Data/dataPCA.mat');
+    k=load('dataPCA.mat');
     
     data=k.data;
     

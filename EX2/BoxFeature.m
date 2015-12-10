@@ -53,8 +53,8 @@ classdef BoxFeature
             %with n rows and 2 columns)
             
             for i=x'
-		value = obj.II(obj.boxesPos+repmat(i(1:2), 1, size(obj.boxesPos,1)));
-	    end
+                value = obj.II(obj.boxesPos+repmat(i(1:2), 1, size(obj.boxesPos,1)));
+            end
             
         end
     end

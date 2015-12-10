@@ -2,7 +2,7 @@ function doFacesLDA( )
     %doFacesLDA - performs LDA on the yale dataset. 
     
     %load dataset from file (this is done)
-    k=load('./Data/dataLDA.mat');
+    k=load('dataLDA.mat');
     
     data=k.data;
     
@@ -37,6 +37,24 @@ function doFacesLDA( )
     [DnewTrain]=projectData(obj,D,2);
     
     [DnewTest]=projectData(obj,Dtest,2);
+    
+    
+    %display('plot train in original');
+    %figure()
+    %title('plot the train in original');
+    %scatter(D(class==0,1),D(class==0,2),'ro');
+    %hold on;
+    %scatter(D(class==1,1),D(class==1,2),'bo');
+    %input('c');
+    
+    %display('plot test in original');
+    %figure()
+    %title('plot test in original');
+    %scatter(Dtest(classTest==0,1),Dtest(classTest==0,2),'ro');
+    %hold on;
+    %scatter(Dtest(classTest==1,1),Dtest(classTest==1,2),'bo');
+    %input('c');
+    
     
     %YOU DON'T NEED TO IMPLEMENT ANYTHING MORE BELOW HERE!
     display('plot the training set in the new subspace');

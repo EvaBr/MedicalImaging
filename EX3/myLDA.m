@@ -116,7 +116,7 @@ classdef myLDA
             %select current eigenmodes! please check that numEigenmodes
             %is smaller than the total number of eigenvectors. In case it is
             %bigger, currEigenmodes should comprise all the eigenvectors
-            currEigenmodes = obj.eigenModes(:, min(numEigenmodes, size(obj.eigenModes, 1))); %prej obratno, : na drugem mestu
+            currEigenmodes = obj.eigenModes(:, 1:min(numEigenmodes, size(obj.eigenModes, 1)) ); %prej obratno, : na drugem mestu
             
             %project
             Dnew = D'*currEigenmodes; %transpose this, if you want same num of cols as before
