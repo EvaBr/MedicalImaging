@@ -15,6 +15,7 @@ classdef IntImage
             %the integral image will have a size that is size(image)+1 and
             %the first row and column are all zero. Please DO NOT USE
             %integralImage method from MATLAB.
+            image=double(image);
             s = size(image);
             imax = s(1)+1;
             jmax = s(2)+1;
@@ -22,8 +23,7 @@ classdef IntImage
             newIm = zeros(imax, jmax);
             for i=2:imax
                 for j=2:jmax
-                    newIm(i, j) = image(i-1, j-1) + newIm(i-1, j) + ...
-                                    newIm(i, j-1) - newIm(i-1, j-1);
+                    newIm(i, j) = image(i-1, j-1) + newIm(i-1, j) + newIm(i, j-1) - newIm(i-1, j-1);
                 end
             end
             
@@ -53,10 +53,8 @@ classdef IntImage
                 if i(1)>=s(1) || i(2)>=s(2)
                     value = [value; 0];  %add result 0, since patch is not contained in the image
                 else
-                    temp = int( min( i(1)+i(3), s(1)), min( i(2)+i(4), s(2) ) ) - ...
-                        int(i(1),  min( i(2)+i(4), s(2) )) - ...
-                        int( min( i(1)+i(3), s(1) ), i(2) ) + ...
-                        int(i(1), i(2)); 
+                    temp = int(min(i(1)+i(3), s(1)), min(i(2)+i(4), s(2)))-int(i(1),  min(i(2)+i(4), s(2))) - int(min(i(1)+i(3), s(1)), i(2)) + int(i(1), i(2)); 
+                    %taking minimums in case patch is bigger than image 
                     value = [value; temp];
                 end
             end

@@ -47,7 +47,7 @@ classdef FilterFeature
                    %the image
                
                    filt = fspecial('prewitt');
-                   obj.featureImg = imfilter(img, filt', 'replicate', 'same');
+                   obj.featureImg = imfilter(img, filt', 'replicate', 'same'); %vertical, so transpose the filter
                    
                case 'diagonalDerivative'
                    %... here you should also produce a filtered version of
@@ -63,7 +63,7 @@ classdef FilterFeature
                    %patches.
                    
                    filt = fspecial('average', siz);
-                   obj.featureImg = sqrt(imfilter(img.^2, filt, 'replicate', 'same') - ...
+                   obj.featureImg = sqrt(imfilter(img.^2, filt, 'replicate', 'same') - ... %instead of looping, use the formula for variance (with E=avg)
                                          imfilter(img, filt, 'replicate', 'same').^2);
                    
            end
@@ -83,7 +83,7 @@ classdef FilterFeature
             value = [];
             for i=x'
                if i(1)>s(1) || i(2)>s(2)
-                   value = [value; 0];
+                   value = [value; 0]; %user specified position, that is not contained in the image
                else
                    value = [value; obj.featureImg(i(1), i(2))];
                end
