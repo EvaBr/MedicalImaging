@@ -35,25 +35,26 @@ function doFacesLDA( )
     %project training data data in LDA bi-dimensional subspace
     
     [DnewTrain]=projectData(obj,D,2);
-    
+    disp(DnewTrain);
+    disp(size(DnewTrain));
     [DnewTest]=projectData(obj,Dtest,2);
     
     
-    %display('plot train in original');
-    %figure()
-    %title('plot the train in original');
-    %scatter(D(class==0,1),D(class==0,2),'ro');
-    %hold on;
-    %scatter(D(class==1,1),D(class==1,2),'bo');
-    %input('c');
+    display('plot train in original');
+    figure()
+    title('plot the train in original');
+    scatter(D(1,class==0),D(2,class==0),'ro'); %D(class==0,1),D(class==0,2)
+    hold on;
+    scatter(D(1,class==1),D(2,class==1),'bo');
+    input('c');
     
-    %display('plot test in original');
-    %figure()
-    %title('plot test in original');
-    %scatter(Dtest(classTest==0,1),Dtest(classTest==0,2),'ro');
-    %hold on;
-    %scatter(Dtest(classTest==1,1),Dtest(classTest==1,2),'bo');
-    %input('c');
+    display('plot test in original');
+    figure()
+    title('plot test in original');
+    scatter(Dtest(1,classTest==0),Dtest(2,classTest==0),'ro'); %Dtest(classTest==0,1),Dtest(classTest==0,2)
+    hold on;
+    scatter(Dtest(1,classTest==1),Dtest(2,classTest==1),'bo');
+    input('c');
     
     
     %YOU DON'T NEED TO IMPLEMENT ANYTHING MORE BELOW HERE!

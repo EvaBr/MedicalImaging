@@ -1,11 +1,12 @@
 function compareMnistPCA_LDA()
-    load('./Data/dataMNIST.mat');
+    load('dataMNIST.mat');
     
     %create PCA object -- use a reduced dataset having only 5000 samples
     %for computational reasons ---
-    obj=myPCA(data.trainImages(:,1:5000));
+    N = 200;
+    obj=myPCA(data.trainImages(:,1:N));
     
-    %project data
+    %project data2
     [Dnew,~]=projectData(obj,data.testImages,3);
     
     %visualize DO NOT MODIFY THIS PART
@@ -28,7 +29,7 @@ function compareMnistPCA_LDA()
     %create LDA object -- use a reduced dataset having only 5000 samples
     %for computational reasons ---
     
-    obj=myLDA(data.trainImages(:,1:5000),data.trainLabels(1:5000)');
+    obj=myLDA(data.trainImages(:,1:N),data.trainLabels(1:N)');
 
     %project data
     [Dnew]=projectData(obj,data.testImages,3);

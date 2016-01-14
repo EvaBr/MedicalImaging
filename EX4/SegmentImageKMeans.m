@@ -24,7 +24,7 @@ classdef SegmentImageKMeans
            %insantiate BoxFeature object and store it in obj.featureObj
            for i=1:length(featParams)
                 obj.featObj{i}=FilterFeature(img,featParams{i}.filterName,featParams{i}.siz,featParams{i}.sigma);
-                obj.features(i,:)=obj.featObj{i}.lookup([X(:),Y(:)])';
+                obj.features(i,:)=obj.featObj{i}.lookup([X(:),Y(:)])'; %every feature is in own row, columns are pixels
            end
            
            %create k-means object which runs k means 10 times in order to

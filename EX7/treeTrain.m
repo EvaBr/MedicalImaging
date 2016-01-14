@@ -41,15 +41,15 @@ for n = 1: numInternals
     weakModels{n}= weakTrain(Xrel, Yrel, opts); % Fill arguements to generate a weaklearner at a particular node n
     
     % split data to child nodes
+    %disp(weakModels{n})
     yhat= weakTest(weakModels{n}, Xrel, opts); % Fill arguements to test the weaklearner and split data to reach children nodes 2n and 2n+1
     
     dataix(reld, 2*n) =  yhat==1; % Binary indicator for points reaching node 2n
-    dataix(reld, 2*n+1)= yhat==0; % Binary indicator for points reaching node 2n+1
+    dataix(reld, 2*n+1) = yhat==0; % Binary indicator for points reaching node 2n+1
 end
 
 % Go over leaf nodes and assign class statistics
-for n= (nd+1)/2 : nd
-    
+for n = (nd+1)/2 : nd
    % Generate leaf node histogram based on data that reached a particular
    % leaf node and save it in leafdist
    all = Y(logical(dataix(:, n)));
@@ -58,8 +58,8 @@ for n= (nd+1)/2 : nd
    end
 end
 
-model.leafdist= leafdist;
-model.depth= d;
-model.classes= u;
-model.weakModels= weakModels;
+model.leafdist = leafdist;
+model.depth = d;
+model.classes = u;
+model.weakModels = weakModels;
 end

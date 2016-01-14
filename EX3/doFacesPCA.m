@@ -36,7 +36,7 @@ function doFacesPCA()
 
     
     numberModes=pcaObject.findNecessaryEigenmodesForPercentageOfVariation(95);
-    display(sprintf('we need %d eigenmodes to keep 95% of variance',numberModes));
+    display(sprintf('we need %d eigenmodes to keep 95percent of variance',numberModes));
     
     %reconstruct data that was previously unseen during training
     [~,weights]=pcaObject.projectData(data.images{20}(:),numberModes);
@@ -44,12 +44,13 @@ function doFacesPCA()
     legalImg=reshape(legalD,size(data.images{20}));
     
     %show this data (original vs. reconstruction)
+    figure();
     subplot(1,2,1);
-    title('Original Image')
+    title('Original vs. Reconstructed Image')
     imagesc(data.images{20});
     colormap gray;
     subplot(1,2,2);
-    title('Reconstructed Image');
+%    title('Reconstructed Image');
     imagesc(legalImg);
     colormap gray;
     
@@ -60,7 +61,7 @@ function doFacesPCA()
     %two faces from the dataset
     %FACE1 --X-- FACE2 <- we want to find X, the face that is in the middle
     %between these two!
-    
+    figure();
     subplot(1,3,1);
     face1=data.images{101};
     imagesc(face1);
@@ -78,6 +79,9 @@ function doFacesPCA()
         imagesc(reshape(legalD,size(face2)));
         colormap gray
         drawnow;
+        %if (i==0.5)
+        %    input('c');
+        %end
         pause(0.2);
     end
 
@@ -90,13 +94,15 @@ function doFacesPCA()
     figure();
     hold on;
     for i=1:length(data.images)
-        [~,weights]=pcaObject.projectData(data.images{i}(:),2); 
+        [~,weights]=pcaObject.projectData(data.images{i}(:),2); %~=dada 
         legalD=pcaObject.synthetize(weights);
         if(data.classes(i)==0)
             plot(weights(1),weights(2),'ro');
+            %plot(dada(1), dada(2),'ro');
             hold on;
         else
-            plot(weights(2),weights(2),'gx');
+            plot(weights(1),weights(2),'gx');
+            %plot(dada(1), dada(2),'ro');
             hold on;
         end
     end

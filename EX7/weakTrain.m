@@ -44,7 +44,7 @@ for classf = classifierID
            tmin= min(col);
            tmax= max(col);
            
-           t = (tmax-tmin)/2; % get threshold for the split between tmin and tmax
+           t = (tmax+tmin)/2; % get threshold for the split between tmin and tmax
            dec = col<t;
            Igain = evalDecision(Y, dec, u); % evaluate information gain for this split
             if Igain>maxgain
@@ -106,7 +106,7 @@ function Igain = evalDecision(Y, dec, u)
 end
 
 % Helper function for class entropy used with Decision Stump
-function H = classEntropy(y, u)
+function H = classEntropy(y, u) %u=unique of y
 % Implement code to generate class entropy
     Nc = zeros(length(u),1);
     N = size(y,1);

@@ -52,7 +52,7 @@ opts.depth= 9;
 opts.numTrees= 100;
 opts.numSplits= 5;
 opts.verbose= true;
-opts.classifierID= 2; % weak learners to use. Can be an array for mix of weak learners too
+opts.classifierID=1; % weak learners to use. Can be an array for mix of weak learners too
 
 tic;
 m= forestTrain(X, Y, opts);
@@ -71,7 +71,7 @@ image_size = size(x);
 xy = [x(:) y(:)];
 
 [yhat, ysoft] = forestTest(m, xy);
-decmap= reshape(ysoft, [image_size 3]);
+decmap = reshape(ysoft, [image_size 3]);
 decmaphard= reshape(yhat, image_size);
 
 subplot(121);

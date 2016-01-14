@@ -71,14 +71,14 @@ classdef myKMeans
                   %THAT SHOULD CONTAIN THE COORDINATES OF YOUR MEANS IN
                   %THIS ITERATION OF THE ALGORITHM. then you can uncomment
                   %the visualisation part.
-    %               if(size(D,1)==2)
-     %                scatter(D(1,:),D(2,:),'kx')
-    %                 hold on;
-    %                 scatter(meansRightNow(1,:),meansRightNow(2,:),'rx')
-    %                 drawnow
-    %                 pause(0.1);
-    %                 hold off;
-    %               end
+                  if(size(D,1)==2)
+                     scatter(D(1,:),D(2,:),'kx')
+                     hold on;
+                     scatter(meansRightNow(1,:),meansRightNow(2,:),'rx')
+                     drawnow
+                     pause(0.1);
+                     hold off;
+                  end
                   %--------------------------------------------
                   
                   %take differences between the new means and the old ones

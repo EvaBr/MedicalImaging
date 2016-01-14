@@ -31,19 +31,24 @@ for n = 1: numInternals
         % Get testing data that reaches a particular node n
         % Hint: use dataix
         reld = logical(dataix(:, n));
-        Xrel = X(rel, :);
+        Xrel = X(reld, :);
     end
     if size(Xrel,1)==0, continue; end % empty branch, ah well
     
-    yhat = weakTest(model, Xrel, opts); % Fill in arguements that sends the weakmodel at node n to split the test data
+    yhat = weakTest(model.weakModels{n}, Xrel, opts); % Fill in arguements that sends the weakmodel at node n to split the test data
     
     dataix(reld, 2*n)= yhat;
     dataix(reld, 2*n+1)= 1 - yhat; % since yhat is in {0,1} and double
 end
 
 % Go over leafs and assign class probabilities
-for n= (nd+1)/2 : nd
-    ff = find(dataix(:, n)==1);
+nd= 2^d - 1;
+numInternals = (nd-1)/2; % Enter number of internal/split nodes
+numLeafs= (nd+1)/2; % Enter number of leaf nodes
+
+
+for n = 1 : numLeafs
+    ff = find(dataix(:, n+numInternals)==1);
     
     hc =  model.leafdist(n, :); % Get leafdist from appropriate leaf model
     vm = max(hc);

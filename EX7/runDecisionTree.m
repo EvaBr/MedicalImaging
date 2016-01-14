@@ -50,15 +50,13 @@ randn('state', 0);
 opts= struct;
 opts.depth= 9;
 opts.numSplits= 10;
-
-
-opts.classifierID= 2; % weak learners to use. Can be an array for mix of weak learners too
+opts.classifierID = 1; % weak learners to use. Can be an array for mix of weak learners too
 
 tic;
 m = treeTrain(X, Y, opts);
 timetrain= toc;
 tic;
-yhatTrain = treeTest(m, X);
+yhatTrain = treeTest(m, X, opts); %%m has option classifierID?
 timetest= toc;
 
 

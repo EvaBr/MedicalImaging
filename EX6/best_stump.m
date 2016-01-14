@@ -10,11 +10,14 @@ function [ dimension, threshold, polarity ] = best_stump( X, Y, W )
 %       - polarity: the polarity of the decision (-1 or 1)
 
 minE = 1000;
+dimension = 1; %just so it wont give error
+threshold = 1;
+polarity = 1;
 for d=1:2
     for t=min(X(:,d)):max(X(:,d))
         for p = [-1 1]
             f = p * (2*(X(:,d) > t) - 1);
-            e = W' * (Y ~= f); %očitno dobiš tle 1000
+            e = W' * (Y ~= f)/sum(W); %očitno dobiš tle povečanje
             if (e < minE)
                 minE = e;
                 dimension = d;

@@ -38,7 +38,11 @@ function model = forestTrain(X, Y, opts)
         % Generate a bootstrapped dataset (XBag,YBag) from (X,Y) using
         % Monte-Carlo Resampling
         % For steps refer to the handout. 
-        
+        sajz = size(X,1);
+        %choosing a small subset:
+        subset = randsample(sajz, sajz); %floor(sajz/3)); %this samples without replacement
+        [XBag, idx] = datasample(X(subset, :), sajz, 1); %this samples with replacement, upsizing back to sajz
+        YBag = Y(idx);
         
         
         treeModels{i} = treeTrain(XBag, YBag, opts);
